@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>average</title>
+</head>
+<body>
+
+<h2>Average of 6 Subjects</h2>
+
+<script>
+
+var marks = [80, 75, 90, 85, 70, 95];   // 6 subjects marks
+var sum = 0;
+
+for(var i = 0; i < marks.length; i++){
+    sum = sum + marks[i];
+}
+
+var average = sum / marks.length;
+
+document.write("Total Marks = " + sum + "<br>");
+document.write("Average Marks = " + average);
+
+</script>
+
+</body>
+</html>
