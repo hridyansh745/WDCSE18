@@ -1,0 +1,12 @@
+const accountId = 12345;
+let accountEmail = "k@gmail.com";
+var accountPassword = "12345";
+let accountCity = "Delhi";
+accountEmail = "newemail@gmail.com";
+accountPassword = "54321";
+accountCity = "Noida";
+console.log(accountId);
+console.table([accountEmail, accountId, accountPassword, accountCity]);
+console.log(accountEmail);
+console.log(accountPassword);
+console.log(accountCity);
