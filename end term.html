@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Grade Calculator</title>
+  <style>
+    body { font-family: Arial; padding: 20px; background: #f0f4ff; }
+    input, button { padding: 7px; margin: 5px; border-radius: 6px; border: 1px solid #ccc; }
+    button { background: #534AB7; color: white; border: none; cursor: pointer; }
+    table { border-collapse: collapse; margin-top: 15px; }
+    th, td { border: 1px solid #ccc; padding: 8px 15px; text-align: center; }
+    th { background: #534AB7; color: white; }
+    .pass { color: green; font-weight: bold; }
+    .fail { color: red; font-weight: bold; }
+  </style>
+</head>
+<body>
+
+<h2>Student Grade Calculator</h2>
+Subjects: <input type="number" id="n" min="1">
+<button onclick="gen()">Generate</button>
+
+<div id="fields"></div>
+<div id="result"></div>
+
+<script>
+function gen() {
+  let n = +document.getElementById('n').value, h = '<br>';
+  for (let i = 1; i <= n; i++)
+    h += `Subject ${i}: <input type="number" id="m${i}" min="0" max="100"><br>`;
+  h += `<button onclick="calc(${n})">Calculate</button>`;
+  document.getElementById('fields').innerHTML = h;
+}
+
+function calc(n) {
+  let total = 0, rows = '';
+  for (let i = 1; i <= n; i++) {
+    let m = +document.getElementById('m' + i).value;
+    total += m;
+    rows += `<tr><td>Subject ${i}</td><td>${m}</td><td class="${m>=33?'pass':'fail'}">${m>=33?'PASS':'FAIL'}</td></tr>`;
+  }
+  let pct = (total / (n * 100) * 100).toFixed(1);
+  let g = pct>=90?'A+':pct>=80?'A':pct>=70?'B+':pct>=60?'B':pct>=50?'C':pct>=40?'D':'F';
+  document.getElementById('result').innerHTML = `
+    <b>Total:</b> ${total}/${n*100} | <b>Percentage:</b> ${pct}% | <b>Grade:</b> ${g}<br><br>
+    <table><tr><th>Subject</th><th>Marks</th><th>Result</th></tr>${rows}</table>`;
+}
+</script>
+</body>
+</html>
